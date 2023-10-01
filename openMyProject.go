@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"os/exec"
@@ -9,6 +10,14 @@ import (
 )
 
 func main() {
+	art, err := os.ReadFile("ascii_art.txt")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(string(art))
+
 	projectPath := "C:/Projects"
 
 	folders, err := os.ReadDir(projectPath)
@@ -41,4 +50,5 @@ func main() {
 	if err != nil {
 		log.Fatalf("cmd.Run() failed with %s\n", err)
 	}
+
 }
