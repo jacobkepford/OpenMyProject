@@ -50,6 +50,7 @@ func main() {
 
 	prompt.HideHelp = true
 	prompt.HideSelected = true
+	prompt.Size = 10
 
 	_, result, err := prompt.Run()
 
