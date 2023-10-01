@@ -36,10 +36,20 @@ func main() {
 		folderSlice[i] = folder.Name()
 	}
 
-	prompt := promptui.Select{
-		Label: "Select a project",
-		Items: folderSlice,
+	templates := &promptui.SelectTemplates{
+		Label:    "{{ . | green }} ",
+		Active:   "{{ . | bold }} ",
+		Inactive: "{{. | green }}",
 	}
+
+	prompt := promptui.Select{
+		Label:     "Use the arrow keys to select a project",
+		Items:     folderSlice,
+		Templates: templates,
+	}
+
+	prompt.HideHelp = true
+	prompt.HideSelected = true
 
 	_, result, err := prompt.Run()
 
