@@ -1,6 +1,7 @@
 package main
 
 import (
+	"embed"
 	"fmt"
 	"log"
 	"os"
@@ -9,8 +10,11 @@ import (
 	"github.com/manifoldco/promptui"
 )
 
+//go:embed ascii_art.txt
+var f embed.FS
+
 func main() {
-	art, err := os.ReadFile("ascii_art.txt")
+	art, err := f.ReadFile("ascii_art.txt")
 
 	if err != nil {
 		log.Fatal(err)
